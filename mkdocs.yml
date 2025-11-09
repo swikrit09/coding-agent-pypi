@@ -1,0 +1,22 @@
+site_name: Coding Agent
+site_description: "A simple Python package to create prompt-based agents using Google GenAI (Gemini) that can read, write and run python scripts."
+site_url: https://swikrit09.github.io/coding-agent-pypi/
+repo_url: https://github.com/swikrit09/coding-agent-pypi
+repo_name: swikrit09/coding-agent-pypi
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.tabs
+    - content.code.copy
+    - content.tabs.link
+  palette:
+    - scheme: default
+      primary: teal
+      accent: purple
+
+nav:
+  - Home: index.md
+  
