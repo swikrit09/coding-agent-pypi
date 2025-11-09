@@ -75,6 +75,7 @@ for /f "tokens=1,2 delims==" %G in (.env) do set %G=%H
 ```
 
 The package uses `python-dotenv` to load `.env` at runtime.
+```
 GEMINI_API_KEY=your_real_gemini_api_key_here
 ```
 
