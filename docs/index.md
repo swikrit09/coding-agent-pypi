@@ -1,7 +1,12 @@
-# coding-agent
+# coding-agent-python
 
-`coding-agent` is a small CLI wrapper around Google GenAI (Gemini) to run prompt-based agents that may call out to local helper functions.  
-This repo provides an installable package with a `coding-agent` command-line entry point and a Python module `coding_agent` for programmatic usage.
+<a href="https://pypi.org/project/coding-agent-python/">
+<img width="807" height="264" alt="Screenshot 2025-08-18 at 12 59 52 PM" src="pip_banner.PNG" /></a>
+
+**PyPi Link** - [Coding-Agent-Python](https://pypi.org/project/coding-agent-python/)
+
+`coding-agent-python` is a small CLI wrapper around Google GenAI (Gemini) to run prompt-based agents that may call out to local helper functions.  
+This repo provides an installable package with a `coding-agent-python` command-line entry point and a Python module `coding_agent` for programmatic usage.
 
 > ⚠️ This project expects a Gemini API key in your environment (see **Configuration**).
 
@@ -10,7 +15,7 @@ This repo provides an installable package with a `coding-agent` command-line ent
 ## Features
 
 - Installable package via `pip` (supports editable installs for development).
-- Console script `coding-agent` for quick prompt runs.
+- Console script `coding-agent-python` for quick prompt runs.
 - Includes a `call_function` helper module so the model can request function execution.
 - Designed to be small and extensible.
 
@@ -21,7 +26,7 @@ This repo provides an installable package with a `coding-agent` command-line ent
 **From PyPI (when published):**
 
 ```bash
-pip install coding-agent
+pip install coding-agent-python
 ````
 
 **From local source (editable, for development):**
@@ -41,10 +46,35 @@ pip install dist/coding_agent-0.1.0-py3-none-any.whl
 ---
 
 ## Configuration
-
 Create a `.env` file in the project root (or set environment variables). At minimum set:
 
 ```
+GEMINI_API_KEY=your_real_gemini_api_key_here
+```
+
+To source the environment variables:
+
+**Bash/Terminal:**
+```bash
+source .env
+# or
+export $(cat .env | xargs)
+```
+
+**PowerShell:**
+```powershell
+Get-Content .env | ForEach-Object {
+    $name, $value = $_.split('=')
+    Set-Content env:\$name $value
+}
+```
+
+**Command Prompt (Windows):**
+```cmd
+for /f "tokens=1,2 delims==" %G in (.env) do set %G=%H
+```
+
+The package uses `python-dotenv` to load `.env` at runtime.
 GEMINI_API_KEY=your_real_gemini_api_key_here
 ```
 
@@ -87,7 +117,7 @@ run("Write a small script that computes factorial", verbose=True)
 Recommended project layout: use `src/` layout to avoid accidental packaging of extra top-level folders.
 
 ```
-coding-agent/
+coding-agent-python/
 ├─ pyproject.toml
 ├─ README.md
 ├─ LICENSE

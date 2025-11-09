@@ -46,10 +46,35 @@ pip install dist/coding_agent-0.1.0-py3-none-any.whl
 ---
 
 ## Configuration
-
 Create a `.env` file in the project root (or set environment variables). At minimum set:
 
 ```
+GEMINI_API_KEY=your_real_gemini_api_key_here
+```
+
+To source the environment variables:
+
+**Bash/Terminal:**
+```bash
+source .env
+# or
+export $(cat .env | xargs)
+```
+
+**PowerShell:**
+```powershell
+Get-Content .env | ForEach-Object {
+    $name, $value = $_.split('=')
+    Set-Content env:\$name $value
+}
+```
+
+**Command Prompt (Windows):**
+```cmd
+for /f "tokens=1,2 delims==" %G in (.env) do set %G=%H
+```
+
+The package uses `python-dotenv` to load `.env` at runtime.
 GEMINI_API_KEY=your_real_gemini_api_key_here
 ```
 
@@ -65,10 +90,10 @@ After installing (and activating your virtualenv if needed):
 
 ```bash
 # Run the CLI; wrap your prompt in quotes
-coding-agent-python "Write a Python script for calculation"
+coding-agent "Write a Python script for calculation"
 ```
 
-If `coding-agent-python` is not available on your PATH, you can run it with the module mode:
+If `coding-agent` is not available on your PATH, you can run it with the module mode:
 
 ```bash
 python -m coding_agent "Write a Python script for calculation"
